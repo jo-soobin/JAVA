@@ -1,15 +1,17 @@
+package °úÁ¦4;
+
 import java.util.Scanner;
  
 public class Number1{
     public static void main(String[] agrs){
-        Scanner in = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         
-        String homework = in.nextLine();
-        char[] div_pro = homework.toCharArray();
+        String homework = sc.nextLine();
+        char[] div = homework.toCharArray();
         int count = 0;
         
-        for(int i=div_pro.length-1; i>=0; i--){
-            for(int j=i; j<div_pro.length; j++){
+        for(int i=div.length-1; i>=0; i--){
+            for(int j=i; j<div.length; j++){
                 String temp1 = homework.substring(i+1);
                 String temp2 = homework.substring(i, j+1);
                 if(temp1.contains(temp2)){
@@ -20,6 +22,6 @@ public class Number1{
             }
         }
         System.out.println(count);
-        in.close();
+        sc.close();
     }
 }
