@@ -1,17 +1,24 @@
-import java.util.Scanner;
+import java.util.Scanner; //이중연결리스트 작성법
+class Node{
+	public int data;
+	public Node prev, next;
+	Node(int e){data=e; prev=next=this;}
+}
 class Queue{
-	static int N = 100; //공간 수 선언
-	int[] data; //배열변수
-	int head, tail; //인덱스 변수명
-	Queue() { data = new int[N]; head = tail = 0; }
+	Node root;
+	Queue() {root = new Node(0);}
 	void add(int e) { 
-		data[tail] = e; //add로 데이터 e가 추가가됨. 이때 새 데이터인 e는 현재 tail인 인덱스에 추가가 됨.
-		tail = (tail+1)%N; //새로운 data e가 tail에 추가되고, tail은 오른쪽으로 한 칸 옮긴다.
+		Node node = new Node(e);
+		node.next = root;
+		node.prev = root.prev;
+		root.prev.next = node;
+		root.prev = node;
 	}
 	void remove() { 
-		head = (head+1)%N;
+		root.next = root.next.next;
+		root.next.prev = root;
 	}
-	int peek () { return data[head];}
+	int peek () { return root.next.data;}
 }
 public class Main {
 	public static void main(String[] args) {
